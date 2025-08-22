@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElectroFix - Professional Electrical Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2);
+        }
+        .booking-section {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e1f0ff 100%);
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+        }
+        .error-message {
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+        .nav-link.active {
+            color: #3b82f6;
+            border-bottom: 2px solid #3b82f6;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Header/Navigation -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://placehold.co/50x50" alt="ElectroFix logo - Yellow lightning bolt inside blue circle representing professional electrical services" class="h-10 w-10 mr-3">
+                <h1 class="text-xl font-bold text-blue-600">ElectroFix</h1>
+            </div>
+            <nav class="hidden md:block">
+                <ul class="flex space-x-8">
+                    <li><a href="#home" class="nav-link active text-gray-700 hover:text-blue-600 transition pb-1">Home</a></li>
+                    <li><a href="#services" class="nav-link text-gray-700 hover:text-blue-600 transition pb-1">Services</a></li>
+                    <li><a href="#about" class="nav-link text-gray-700 hover:text-blue-600 transition pb-1">About</a></li>
+                    <li><a href="#booking" class="bg-yellow-500 text-white px-4 py-2 rounded-md hover:bg-yellow-600 transition">Book Now</a></li>
+                </ul>
+            </nav>
+            <button class="md:hidden text-gray-700" id="mobile-menu-button">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16 md:py-24">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h2 class="text-4xl font-bold mb-4">Certified Electrical Services</h2>
+                <p class="text-xl mb-6">24/7 emergency electrical repairs and installations by licensed professionals serving your area since 2008.</p>
+                <div class="flex space-x-4">
+                    <a href="#booking" class="bg-white text-blue-600 px-6 py-3 rounded-md font-medium hover:bg-blue-50 transition inline-flex items-center">
+                        Book Now <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="tel:+15551234567" class="bg-transparent border-2 border-white px-6 py-3 rounded-md font-medium hover:bg-blue-700 transition inline-flex items-center">
+                        <i class="fas fa-phone-alt mr-2"></i> (555) 123-4567
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <img src="https://placehold.co/600x400" alt="Certified electrician wiring an electrical panel with safety gear in a modern home setting" class="rounded-lg shadow-xl">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-3">Our Electrical Services</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Comprehensive electrical solutions for homes and businesses</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service Card 1 -->
+                <div class="service-card bg-white p-6 rounded-lg border border-gray-200 transition cursor-pointer">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-lightbulb text-yellow-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Lighting Installation</h3>
+                    <p class="text-gray-600 mb-4">Expert installation of interior/exterior lighting, chandeliers, recessed lighting, and smart lighting systems.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-blue-600 font-medium">From $89</span>
+                        <a href="#booking" class="text-blue-600 hover:text-blue-800 transition">Book Now &rarr;</a>
+                    </div>
+                </div>
+                
+                <!-- Service Card 2 -->
+                <div class="service-card bg-white p-6 rounded-lg border border-gray-200 transition cursor-pointer">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-plug text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Outlet & Switch Repair</h3>
+                    <p class="text-gray-600 mb-4">Faulty outlet or switch? We handle replacements, upgrades, and troubleshooting for all electrical points.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-blue-600 font-medium">From $69</span>
+                        <a href="#booking" class="text-blue-600 hover:text-blue-800 transition">Book Now &rarr;</a>
+                    </div>
+                </div>
+                
+                <!-- Service Card 3 -->
+                <div class="service-card bg-white p-6 rounded-lg border border-gray-200 transition cursor-pointer">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-bolt text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Electrical Panel Upgrade</h3>
+                    <p class="text-gray-600 mb-4">Upgrade obsolete panels to modern standards for improved safety and capacity. 100-400 amp service.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-blue-600 font-medium">From $799</span>
+                        <a href="#booking" class="text-blue-600 hover:text-blue-800 transition">Book Now &rarr;</a>
+                    </div>
+                </div>
+                
+                <!-- Service Card 4 -->
+                <div class="service-card bg-white p-6 rounded-lg border border-gray-200 transition cursor-pointer">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-home text-green-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Whole House Wiring</h3>
+                    <p class="text-gray-600 mb-4">Complete new construction wiring and rewiring for older homes to meet current electrical codes.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-blue-600 font-medium">From $1,999</span>
+                        <a href="#booking" class="text-blue-600 hover:text-blue-800 transition">Book Now &rarr;</a>
+                    </div>
+                </div>
+                
+                <!-- Service Card 5 -->
+                <div class="service-card bg-white p-6 rounded-lg border border-gray-200 transition cursor-pointer">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-fire text-red-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Emergency Repairs</h3>
+                    <p class="text-gray-600 mb-4">24/7 emergency service for electrical issues, power outages, sparks, and breaker problems.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-blue-600 font-medium">From $129</span>
+                        <a href="#booking" class="text-blue-600 hover:text-blue-800 transition">Book Now &rarr;</a>
+                    </div>
+                </div>
+                
+                <!-- Service Card 6 -->
+                <div class="service-card bg-white p-6 rounded-lg border border-gray-200 transition cursor-pointer">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-charging-station text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">EV Charger Installation</h3>
+                    <p class="text-gray-600 mb-4">Professional installation of Level 2 EV chargers for faster charging at home with proper permits.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-blue-600 font-medium">From $499</span>
+                        <a href="#booking" class="text-blue-600 hover:text-blue-800 transition">Book Now &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-3">Why Choose ElectroFix</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">The trusted choice for electrical services in the region</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-award text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Licensed & Insured</h3>
+                    <p class="text-gray-600">All our electricians are licensed, bonded, and insured for your protection.</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-clock text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Prompt Service</h3>
+                    <p class="text-gray-600">Same-day service available for most jobs with minimal wait time.</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-check-circle text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Quality Workmanship</h3>
+                    <p class="text-gray-600">We take pride in our work and never cut corners on safety.</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-dollar-sign text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Upfront Pricing</h3>
+                    <p class="text-gray-600">No hidden fees - we provide transparent pricing before any work begins.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="booking-section py-16">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2 p-8 bg-blue-600 text-white">
+                        <h2 class="text-2xl font-bold mb-4">Book Your Electrical Service</h2>
+                        <p class="mb-6">Fill out the form and we'll contact you within 30 minutes to confirm your appointment.</p>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="font-semibold">24/7 Availability</h4>
+                                    <p class="text-blue-100 text-sm">Emergency services available round the clock</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="font-semibold">Certified Electricians</h4>
+                                    <p class="text-blue-100 text-sm">All technicians are licensed and background checked</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="font-semibold">Satisfaction Guaranteed</h4>
+                                    <p class="text-blue-100 text-sm">We stand behind our work with a 100% satisfaction guarantee</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8 pt-6 border-t border-blue-500">
+                            <div class="flex items-center">
+                                <i class="fas fa-phone-volume mr-3 text-xl"></i>
+                                <div>
+                                    <p class="text-sm text-blue-100">Need immediate assistance?</p>
+                                    <a href="tel:+15551234567" class="text-xl font-bold">(555) 123-4567</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 p-8">
+                        <h3 class="text-xl font-bold mb-6 text-gray-800">Service Request Form</h3>
+                        <form id="bookingForm" class="space-y-4">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name*</label>
+                                <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                                <div class="error-message" id="name-error">Please enter your name</div>
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email*</label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                                <div class="error-message" id="email-error">Please enter a valid email</div>
+                            </div>
+                            
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number*</label>
+                                <input type="tel" id="phone" name="phone" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                                <div class="error-message" id="phone-error">Please enter a valid phone number</div>
+                            </div>
+                            
+                            <div>
+                                <label for="service" class="block text-sm font-medium text-gray-700 mb-1">Service Needed*</label>
+                                <select id="service" name="service" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                                    <option value="">Select a service</option>
+                                    <option value="Lighting Installation">Lighting Installation</option>
+                                    <option value="Outlet/Switch Repair">Outlet/Switch Repair</option>
+                                    <option value="Panel Upgrade">Panel Upgrade</option>
+                                    <option value="Whole House Wiring">Whole House Wiring</option>
+                                    <option value="EV Charger Installation">EV Charger Installation</option>
+                                    <option value="Emergency Repair">Emergency Repair</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                                <div class="error-message" id="service-error">Please select a service</div>
+                            </div>
+                            
+                            <div>
+                                <label for="date" class="block text-sm font-medium text-gray-700 mb-1">Preferred Date*</label>
+                                <input type="date" id="date" name="date" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                                <div class="error-message" id="date-error">Please select a date</div>
+                            </div>
+                            
+                            <div>
+                                <label for="time" class="block text-sm font-medium text-gray-700 mb-1">Preferred Time*</label>
+                                <select id="time" name="time" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                                    <option value="">Select time window</option>
+                                    <option value="8am-12pm">Morning (8am-12pm)</option>
+                                    <option value="12pm-4pm">Afternoon (12pm-4pm)</option>
+                                    <option value="4pm-8pm">Evening (4pm-8pm)</option>
+                                    <option value="ASAP">Emergency - ASAP</option>
+                                </select>
+                                <div class="error-message" id="time-error">Please select a time window</div>
+                            </div>
+                            
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Additional Details</label>
+                                <textarea id="message" name="message" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-yellow-500 text-white py-3 px-4 rounded-md hover:bg-yellow-600 transition font-medium">
+                                Request Service
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-3">What Our Clients Say</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Trusted by thousands of homeowners and businesses</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0 mr-3">
+                            <img src="https://placehold.co/50x50" alt="Portrait of Sarah Johnson, satisfied customer from Boston" class="h-10 w-10 rounded-full">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Sarah Johnson</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"ElectroFix rewired our entire house and did an amazing job. They were professional, cleaned up after themselves, and explained everything clearly. Highly recommend!"</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0 mr-3">
+                            <img src="https://placehold.co/50x50" alt="Portrait of Michael Chen, business owner from downtown" class="h-10 w-10 rounded-full">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Michael Chen</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"We've used ElectroFix for our restaurant's electrical needs for 5 years. Always reliable, quick response for emergencies, and fair pricing. Our go-to electricians."</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0 mr-3">
+                            <img src="https://placehold.co/50x50" alt="Portrait of the Rodriguez family, homeowners from suburbs" class="h-10 w-10 rounded-full">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Rodriguez Family</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Had our panel upgraded after frequent breaker trips. The technician arrived on time, worked efficiently, and tested everything thoroughly. No issues since!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">ElectroFix</h3>
+                    <p class="text-gray-400">Professional electrical services with a commitment to quality and customer satisfaction since 2008.</p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition">Services</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="#booking" class="text-gray-400 hover:text-white transition">Book Service</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-white transition">Testimonials</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Residential Electrical</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Commercial Electrical</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Emergency Repairs</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Electrical Inspections</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">EV Charger Installation</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-blue-400"></i>
+                            <span class="text-gray-400">1234 Electric Ave, Suite 200<br>Boston, MA 02108</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3 text-blue-400"></i>
+                            <a href="tel:+15551234567" class="text-gray-400 hover:text-white transition">(555) 123-4567</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-blue-400"></i>
+                            <a href="mailto:info@electrofix.com" class="text-gray-400 hover:text-white transition">info@electrofix.com</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-clock mr-3 text-blue-400"></i>
+                            <span class="text-gray-400">24/7 Emergency Service</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-10 pt-6 text-center text-gray-500 text-sm">
+                <p>&copy; 2023 ElectroFix Electrical Services. All rights reserved. Licensed and insured in MA, RI, NH.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            alert("Mobile menu would open here in a complete implementation.");
+        });
+
+        // Highlight active navigation link
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Form validation
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let isValid = true;
+            
+            // Validate name
+            const name = document.getElementById('name');
+            const nameError = document.getElementById('name-error');
+            if (!name.value.trim()) {
+                nameError.style.display = 'block';
+                isValid = false;
+            } else {
+                nameError.style.display = 'none';
+            }
+            
+            // Validate email
+            const email = document.getElementById('email');
+            const emailError = document.getElementById('email-error');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email.value.trim() || !emailRegex.test(email.value)) {
+                emailError.style.display = 'block';
+                isValid = false;
+            } else {
+                emailError.style.display = 'none';
+            }
+            
+            // Validate phone
+            const phone = document.getElementById('phone');
+            const phoneError = document.getElementById('phone-error');
+            const phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
+            if (!phone.value.trim() || !phoneRegex.test(phone.value)) {
+                phoneError.style.display = 'block';
+                isValid = false;
+            } else {
+                phoneError.style.display = 'none';
+            }
+            
+            // Validate service
+            const service = document.getElementById('service');
+            const serviceError = document.getElementById('service-error');
+            if (!service.value) {
+                serviceError.style.display = 'block';
+                isValid = false;
+            } else {
+                serviceError.style.display = 'none';
+            }
+            
+            // Validate date
+            const date = document.getElementById('date');
+            const dateError = document.getElementById('date-error');
+            if (!date.value) {
+                dateError.style.display = 'block';
+                isValid = false;
+            } else {
+                dateError.style.display = 'none';
+            }
+            
+            // Validate time
+            const time = document.getElementById('time');
+            const timeError = document.getElementById('time-error');
+            if (!time.value) {
+                timeError.style.display = 'block';
+                isValid = false;
+            } else {
+                timeError.style.display = 'none';
+            }
+            
+            if (isValid) {
+                alert('Thank you for your booking request! A representative will contact you shortly to confirm your appointment.');
+                this.reset();
+            }
+        });
+
+        // Set minimum date to today for booking
+        document.getElementById('date').min = new Date().toISOString().split('T')[0];
+    </script>
+</body>
+</html>
